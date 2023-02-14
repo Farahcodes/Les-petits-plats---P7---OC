@@ -62,3 +62,29 @@ header {
 main {
   margin: 0 100px;
 }
+/* Search */
+.search {
+  background: #e7e7e7;
+  border-radius: 5px;
+}
+
+.search input,
+.search button {
+  background: none;
+  border: none;
+}
+
+.search input {
+  padding: 23px 22px 24px;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.search input::placeholder {
+  font-family: "Lato";
+  opacity: 0.25;
+}
+
+.search button {
+  padding: 0 20px;
+}
