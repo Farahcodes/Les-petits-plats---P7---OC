@@ -57,3 +57,8 @@ header {
   line-height: 47px;
   color: #d04f4f;
 }
+
+/* Main */
+main {
+  margin: 0 100px;
+}
