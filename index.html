@@ -9,24 +9,71 @@
     <title>Les petits plats</title>
   </head>
   <body>
+    <!-- Header -->
     <header>
       <div class="logo">
         <img src="assets/icons/logoIcon.svg" alt="Les petits plats" />
         <h1>Les petits plats</h1>
       </div>
     </header>
+    <!-- End of header -->
     <main>
+      <!-- Search Input -->
       <div class="search input-group">
         <input
           type="text"
           class="form-control"
-          placeholder="Search an ingredient, device, ustensil or a recipe"
+          placeholder="Search an ingredient, device, utensil or a recipe"
         />
         <div class="input-group-append">
           <button class="btn" type="button">
             <img src="assets/icons/search.svg" alt="" />
           </button>
         </div>
+      </div>
+      <!-- End of search input -->
+      <!-- Filters -->
+      <div class="filters">
+        <!-- Selected filters -->
+        <div class="filtersSelected"></div>
+        <!-- End of selected filters -->
+        <!-- Filters dropdowns -->
+        <div class="filtersDropdowns">
+          <!-- Ingredients dropdown -->
+          <div class="dropdown input-group ingredient" data-type="ingredient">
+            <input type="text" class="form-control" placeholder="Ingredients" />
+            <div class="input-group-append">
+              <button class="btn" type="button">
+                <img src="assets/icons/arrow.svg" alt="" />
+              </button>
+            </div>
+            <div class="dropdownOptions ingredient"></div>
+          </div>
+          <!-- End of Ingredients dropdown -->
+          <!-- Appliance dropdown -->
+          <div class="dropdown input-group appliance" data-type="appliance">
+            <input type="text" class="form-control" placeholder="Device" />
+            <div class="input-group-append">
+              <button class="btn" type="button">
+                <img src="assets/icons/arrow.svg" alt="" />
+              </button>
+            </div>
+            <div class="dropdownOptions appliance"></div>
+          </div>
+          <!-- End of appliance dropdown -->
+          <!-- Utensil dropdown -->
+          <div class="dropdown input-group utensil" data-type="utensil">
+            <input type="text" class="form-control" placeholder="Utensiles" />
+            <div class="input-group-append">
+              <button class="btn" type="button">
+                <img src="assets/icons/arrow.svg" alt="" />
+              </button>
+            </div>
+            <div class="dropdownOptions utensil"></div>
+          </div>
+          <!-- End of utensil dropdown -->
+        </div>
+        <!-- End of filters dropdowns -->
       </div>
     </main>
   </body>
