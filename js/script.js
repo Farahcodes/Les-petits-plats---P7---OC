@@ -33,6 +33,8 @@ function structureItems(recipes) {
 
 // createCard factory
 function createCard(recipe) {
+  console.log("creating card for recipe", recipe);
+
   const card = document.createElement("article");
   card.classList.add("card");
 
@@ -85,9 +87,20 @@ function createCard(recipe) {
   card.appendChild(cardBody);
   return card;
 }
+// displaying recipes
+function displayRecipes(recipes) {
+  const recipeContainer = document.querySelector(".grid");
+  recipeContainer.innerHTML = ""; // clear the container
+
+  recipes.forEach((recipe) => {
+    const card = createCard(recipe);
+    recipeContainer.appendChild(card);
+  });
+}
 
 async function init() {
   await structureData(recipes); // awaits the completion of the structureData() function, which is an asynchronous function that returns the unique lists of ingredients, utensils, and appliances from the recipes array.
+  displayRecipes(recipes);
 }
 
 init();
