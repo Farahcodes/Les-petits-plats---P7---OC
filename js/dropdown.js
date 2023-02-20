@@ -80,3 +80,16 @@ function generateDropdownList(list) {
 
   return generatedList;
 } // creates the HTML for a list of tags to display in a dropdown menu based on a given array of tags. The tags are divided into three columns with roughly equal numbers of tags in each column.
+
+function createDropdownFilterCard(text, type) {
+  const filter = document.createElement("span");
+  filter.classList.add("filter", type);
+  filter.textContent = text[0].toUpperCase() + text.slice(1);
+  filter.dataset.type = type;
+  const img = document.createElement("img");
+  img.src = "assets/icons/delete.svg";
+  img.alt = "";
+  img.setAttribute("onclick", "removeDropdownFilter(event)");
+  filter.appendChild(img);
+  return filter;
+} // creates an HTML element for a tag that has been selected from a dropdown menu. The element includes the tag text, a class based on the tag type (ingredient, appliance, or utensil), and a delete button.
