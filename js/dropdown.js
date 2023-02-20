@@ -194,3 +194,23 @@ function removeDropdownFilter(event) {
     selectedFilters.style.display = "";
   }
 } // is called when a tag is removed from the list of selected tags. It removes the tag from the list and calls recipesTagReload() to reload the list of displayed recipes.
+
+function getDropdownsLists() {
+  const ingredients = document.querySelector(
+    ".dropdown.ingredient .dropdownOptions"
+  );
+  const appliance = document.querySelector(
+    ".dropdown.appliance .dropdownOptions"
+  );
+  const utensil = document.querySelector(".dropdown.utensil .dropdownOptions");
+
+  ingredients.innerHTML = appliance.innerHTML = utensil.innerHTML = "";
+
+  dropdownFilterInput();
+
+  ingredients.appendChild(
+    generateDropdownList(listOfIngredientsFilteredSearch)
+  );
+  appliance.appendChild(generateDropdownList(listOfAppliancesFilteredSearch));
+  utensil.appendChild(generateDropdownList(listOfUtensilsFilteredSearch));
+} // is called to generate the dropdown menus based on the current list of available tags.
