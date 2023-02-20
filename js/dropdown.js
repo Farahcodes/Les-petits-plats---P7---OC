@@ -127,7 +127,6 @@ function addDropdownFilter(event) {
   }
 } // is called when a tag is selected from a dropdown menu. It adds the tag to the list of selected tags and calls recipesTagUpdate() to update the list of displayed recipes based on the new selection.
 
-
 function addDropdownFilter(event) {
   const target = event.currentTarget;
   const text = target.textContent;
@@ -160,3 +159,38 @@ function addDropdownFilter(event) {
     selectedFilters.style.display = "";
   }
 } // is called when a tag is selected from a dropdown menu. It adds the tag to the list of selected tags and calls recipesTagUpdate() to update the list of displayed recipes based on the new selection.
+
+function removeDropdownFilter(event) {
+  const target = event.currentTarget;
+  const text =
+    target.parentNode.textContent[0].toLowerCase() +
+    target.parentNode.textContent.slice(1);
+  const type = target.parentNode.dataset.type;
+  const selectedFilters = document.querySelector(".filtersSelected");
+
+  const listType =
+    type === "ingredient"
+      ? listOfIngredientsSelected
+      : type === "appliance"
+      ? listOfAppliancesSelected
+      : type === "utensil"
+      ? listOfUtensilsSelected
+      : "";
+
+  if (listType.has(text)) {
+    listType.delete(text);
+    target.parentNode.outerHTML = "";
+    recipesTagReload();
+  }
+
+  if (
+    listOfIngredientsSelected.size +
+      listOfAppliancesSelected.size +
+      listOfUtensilsSelected.size >
+    0
+  ) {
+    selectedFilters.style.display = "flex";
+  } else {
+    selectedFilters.style.display = "";
+  }
+} // is called when a tag is removed from the list of selected tags. It removes the tag from the list and calls recipesTagReload() to reload the list of displayed recipes.
