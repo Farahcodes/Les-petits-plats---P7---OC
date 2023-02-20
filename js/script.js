@@ -30,3 +30,9 @@ function structureItems(recipes) {
   // returns an array of three arrays (containing the unique values for ingredients, utensils, and appliances in the recipe data)
   return [[...setOfIngredients], [...setOfUtensils], [...setOfAppliances]];
 }
+
+async function init() {
+  await structureData(recipes); // awaits the completion of the structureData() function, which is an asynchronous function that returns the unique lists of ingredients, utensils, and appliances from the recipes array.
+}
+
+init();
