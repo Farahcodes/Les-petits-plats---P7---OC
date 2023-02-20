@@ -71,7 +71,7 @@ function generateDropdownList(list) {
     let ul = document.createElement("ul");
     let li = document.createElement("li");
     li.classList.add("nothingAvailable");
-    li.textContent = "Aucun tag disponible";
+    li.textContent = "No available tag";
     ul.appendChild(li);
     generatedList.appendChild(ul);
   }
@@ -93,3 +93,36 @@ function createDropdownFilterCard(text, type) {
   filter.appendChild(img);
   return filter;
 } // creates an HTML element for a tag that has been selected from a dropdown menu. The element includes the tag text, a class based on the tag type (ingredient, appliance, or utensil), and a delete button.
+
+function addDropdownFilter(event) {
+  const target = event.currentTarget;
+  const text = target.textContent;
+  const type = target.parentNode.parentNode.parentNode.dataset.type;
+  const selectedFilters = document.querySelector(".filtersSelected");
+
+  const listType =
+    type === "ingredient"
+      ? listOfIngredientsSelected
+      : type === "appliance"
+      ? listOfAppliancesSelected
+      : type === "utensil"
+      ? listOfUtensilsSelected
+      : "";
+
+  if (!listType.has(text)) {
+    listType.add(text);
+    selectedFilters.appendChild(createDropdownFilterCard(text, type));
+    recipesTagUpdate();
+  }
+
+  if (
+    listOfIngredientsSelected.size +
+      listOfAppliancesSelected.size +
+      listOfUtensilsSelected.size >
+    0
+  ) {
+    selectedFilters.style.display = "flex";
+  } else {
+    selectedFilters.style.display = "";
+  }
+} // is called when a tag is selected from a dropdown menu. It adds the tag to the list of selected tags and calls recipesTagUpdate() to update the list of displayed recipes based on the new selection.
