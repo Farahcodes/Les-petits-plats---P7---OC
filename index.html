@@ -41,10 +41,23 @@
         <!-- Filters dropdowns -->
         <div class="filtersDropdowns">
           <!-- Ingredients dropdown -->
-          <div class="dropdown input-group ingredient" data-type="ingredient">
-            <input type="text" class="form-control" placeholder="Ingredients" />
+          <div
+            class="dropdown input-group ingredient"
+            data-type="ingredient"
+            onmousedown="dropdownOpen(event.currentTarget)"
+          >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingredients"
+              oninput="getDropdownsLists()"
+            />
             <div class="input-group-append">
-              <button class="btn" type="button">
+              <button
+                class="btn"
+                type="button"
+                onclick="dropdownToggle(event.currentTarget.parentNode.parentNode)"
+              >
                 <img src="assets/icons/arrow.svg" alt="" />
               </button>
             </div>
@@ -52,10 +65,23 @@
           </div>
           <!-- End of Ingredients dropdown -->
           <!-- Appliance dropdown -->
-          <div class="dropdown input-group appliance" data-type="appliance">
-            <input type="text" class="form-control" placeholder="Device" />
+          <div
+            class="dropdown input-group appliance"
+            data-type="appliance"
+            onmousedown="dropdownOpen(event.currentTarget)"
+          >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Device"
+              oninput="getDropdownsLists()"
+            />
             <div class="input-group-append">
-              <button class="btn" type="button">
+              <button
+                class="btn"
+                type="button"
+                onclick="dropdownToggle(event.currentTarget.parentNode.parentNode)"
+              >
                 <img src="assets/icons/arrow.svg" alt="" />
               </button>
             </div>
@@ -63,10 +89,23 @@
           </div>
           <!-- End of appliance dropdown -->
           <!-- Utensil dropdown -->
-          <div class="dropdown input-group utensil" data-type="utensil">
-            <input type="text" class="form-control" placeholder="Utensiles" />
+          <div
+            class="dropdown input-group utensil"
+            data-type="utensil"
+            onmousedown="dropdownOpen(event.currentTarget)"
+          >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Utensiles"
+              oninput="getDropdownsLists()"
+            />
             <div class="input-group-append">
-              <button class="btn" type="button">
+              <button
+                class="btn"
+                type="button"
+                onclick="dropdownToggle(event.currentTarget.parentNode.parentNode)"
+              >
                 <img src="assets/icons/arrow.svg" alt="" />
               </button>
             </div>
@@ -82,5 +121,6 @@
     <script src="data/recipes.js"></script>
     <script src="js/script.js"></script>
     <script src="js/input.js"></script>
+    <script src="js/dropdown.js"></script>
   </body>
 </html>
