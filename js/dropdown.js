@@ -39,3 +39,44 @@ function dropdownResize() {
     dropdown[i].style.width = dropdownOptions.offsetWidth + "px";
   }
 } //Adjusts the width of each dropdown menu based on the width of its contents to prevent a horizontal scroll bar from appearing.
+
+function generateDropdownList(list) {
+  const listItems = list.length / 3;
+  const generatedList = document.createDocumentFragment();
+
+  if (listItems != 0) {
+    for (let i = 1; i < 4; i++) {
+      let ul = document.createElement("ul");
+      let currentListItems =
+        i === 1
+          ? Math.ceil(listItems)
+          : i === 2
+          ? Math.round(listItems)
+          : Math.floor(listItems);
+
+      for (
+        let j = (i - 1) * currentListItems;
+        j <= i * currentListItems - 1;
+        j++
+      ) {
+        let li = document.createElement("li");
+        li.setAttribute("onclick", "addDropdownFilter(event)");
+        li.textContent = list[j];
+        ul.appendChild(li);
+      }
+
+      generatedList.appendChild(ul);
+    }
+  } else {
+    let ul = document.createElement("ul");
+    let li = document.createElement("li");
+    li.classList.add("nothingAvailable");
+    li.textContent = "Aucun tag disponible";
+    ul.appendChild(li);
+    generatedList.appendChild(ul);
+  }
+
+  setTimeout(() => dropdownResize(), 50);
+
+  return generatedList;
+} // creates the HTML for a list of tags to display in a dropdown menu based on a given array of tags. The tags are divided into three columns with roughly equal numbers of tags in each column.
