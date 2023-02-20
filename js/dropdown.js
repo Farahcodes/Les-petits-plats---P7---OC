@@ -28,3 +28,14 @@ function dropdownClose() {
     dropdownCurrentlyOpen[i].style.width = "";
   }
 } //Closes any currently open dropdown menus by removing the "dropdownOpen" class and resetting their width.
+
+function dropdownResize() {
+  const dropdown = document.querySelectorAll(".dropdown");
+
+  for (let i = 0; i < dropdown.length; i++) {
+    const dropdownOptions = dropdown.item(i).querySelector(".dropdownOptions");
+    dropdownOptions.style.width = "";
+    dropdownOptions.style.width = dropdownOptions.offsetWidth + "px"; // Empêche le décalage d'un pixel coupé
+    dropdown[i].style.width = dropdownOptions.offsetWidth + "px";
+  }
+} //Adjusts the width of each dropdown menu based on the width of its contents to prevent a horizontal scroll bar from appearing.
