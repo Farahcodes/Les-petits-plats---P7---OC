@@ -94,3 +94,73 @@ function recipesTagFilter() {
 
   return itemsFiltered;
 }
+
+// The recipesTagUpdate() function is called whenever a tag is selected or deselected, and it updates the recipesTagFiltered array by calling recipesTagFilter(), and then calls the recipesInputReload() function to update the recipe cards based on the filtered recipes.
+function recipesTagUpdate() {
+  recipesTagFiltered = recipesTagFilter();
+  recipesInputReload();
+}
+
+// The recipesTagReload() function is called whenever all tags are cleared, and it resets the recipesTagFiltered array to be a copy of the original recipes array. It then calls recipesTagUpdate() to update the recipe cards with the unfiltered recipes.
+function recipesTagReload() {
+  recipesTagFiltered = recipes;
+  recipesTagUpdate();
+}
+
+// recipesInputFilter is a function that is responsible for filtering the recipe cards based on the search input.
+function recipesInputFilter() {
+  // getting the value of the search input field and converts it to lowercase using the toLowerCase() method.
+  const inputFilter = document
+    .querySelector(".search input")
+    .value.toLowerCase();
+
+  // initializeing an empty array itemsFiltered that will store the filtered recipe cards.
+  let itemsFiltered = [];
+
+  // checking if the length of the search input is greater than or equal to 3 characters.
+  if (inputFilter.length >= 3) {
+    //If the length of the search input is greater than or equal to 3, it loops through the recipesInputFiltered array, which contains the recipes that have already been filtered by the tags, and checks whether the search input matches any part of the recipe card.
+    for (let i = 0; i < recipesInputFiltered.length; i++) {
+      const item = recipesInputFiltered[i];
+
+      const isFilterInName = item.name.toLowerCase().includes(inputFilter);
+      let isFilterInIngredients = false;
+      for (let j = 0; j < item.ingredients.length; j++) {
+        if (item.ingredients[j].ingredient.includes(inputFilter)) {
+          isFilterInIngredients = true;
+        }
+      }
+      const isFilterInDescription = item.description
+        .toLowerCase()
+        .includes(inputFilter);
+
+      // If the search term is found in the recipe, add it to the filtered array.
+      if (isFilterInName || isFilterInIngredients || isFilterInDescription) {
+        itemsFiltered.push(item);
+      }
+    }
+
+    // Updating the filtered dropdowns lists based on the filtered recipe cards and calls the getDropdownsLists function to update the dropdowns
+    [
+      listOfIngredientsFilteredInput,
+      listOfUtensilsFilteredInput,
+      listOfAppliancesFilteredInput,
+    ] = [...structureItems(itemsFiltered)];
+    [
+      listOfIngredientsFiltered,
+      listOfUtensilsFiltered,
+      listOfAppliancesFiltered,
+    ] = [
+      listOfIngredientsFilteredInput,
+      listOfUtensilsFilteredInput,
+      listOfAppliancesFilteredInput,
+    ];
+
+    getDropdownsLists();
+  } else {
+    // If the search input is not long enough, it simply copies the recipesTagFiltered array (which contains the recipes filtered by tags) into itemsFiltered.
+    itemsFiltered = recipesTagFiltered;
+  }
+  // returns the itemsFiltered array, which contains the filtered recipe cards based on the search input.
+  return itemsFiltered;
+}
