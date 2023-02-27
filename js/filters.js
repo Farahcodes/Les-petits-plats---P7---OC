@@ -12,3 +12,11 @@ let listOfAppliancesFilteredTag = [];
 let listOfIngredientsFilteredInput = [];
 let listOfUtensilsFilteredInput = [];
 let listOfAppliancesFilteredInput = [];
+
+// creating variables initially containing the full list of recipes
+// recipesTagFiltered:used to store the list of recipes that have been filtered by the tag filters
+//recipesInputFiltered: used to store the list of recipes that have been filtered by the search input
+//recipesFiltered: store the intersection of the two filtered lists
+let recipesTagFiltered = recipes;
+let recipesInputFiltered = recipesTagFiltered;
+let recipesFiltered = recipesInputFiltered;
