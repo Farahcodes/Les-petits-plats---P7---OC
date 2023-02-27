@@ -164,3 +164,17 @@ function recipesInputFilter() {
   // returns the itemsFiltered array, which contains the filtered recipe cards based on the search input.
   return itemsFiltered;
 }
+
+// Updates the filtered recipe list by calling the recipesInputFilter() function to apply the search input filter. Then, it updates the recipesFiltered array and re-generates the dropdown lists using the getDropdownsLists() function. Finally, it calls the reloadCards() function to display the updated recipe cards.
+function recipesInputUpdate() {
+  recipesInputFiltered = recipesInputFilter();
+  recipesFiltered = recipesInputFiltered;
+  getDropdownsLists();
+  reloadCards();
+}
+
+// Reloads the filtered recipe list with the original list filtered by tags, stored in the recipesTagFiltered array. It then calls recipesInputUpdate() to update the displayed cards with the original list.
+function recipesInputReload() {
+  recipesInputFiltered = recipesTagFiltered;
+  recipesInputUpdate();
+}
