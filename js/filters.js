@@ -7,3 +7,8 @@ let listOfAppliancesSelected = new Set();
 let listOfIngredientsFilteredTag = [];
 let listOfUtensilsFilteredTag = [];
 let listOfAppliancesFilteredTag = [];
+
+// creating empty arrays to store the filtered lists of ingredients, utensils, and appliances for the input filters
+let listOfIngredientsFilteredInput = [];
+let listOfUtensilsFilteredInput = [];
+let listOfAppliancesFilteredInput = [];
