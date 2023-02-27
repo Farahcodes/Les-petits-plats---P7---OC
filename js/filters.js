@@ -76,7 +76,7 @@ function recipesTagFilter() {
     }
   }
 
-  // Dropdowns filters
+  // Dropdowns filters: filtering the dropdown lists based on the filtered recipes.
   [
     listOfIngredientsFilteredTag,
     listOfUtensilsFilteredTag,
