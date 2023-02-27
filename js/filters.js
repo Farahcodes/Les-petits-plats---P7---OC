@@ -178,3 +178,51 @@ function recipesInputReload() {
   recipesInputFiltered = recipesTagFiltered;
   recipesInputUpdate();
 }
+
+// Filters the items displayed in the dropdown menus based on user input.
+function dropdownFilterInput() {
+  // defining three empty arrays used to store the filtered items for each dropdown menu
+  [
+    listOfIngredientsFilteredSearch,
+    listOfAppliancesFilteredSearch,
+    listOfUtensilsFilteredSearch,
+  ] = [[], [], []];
+
+  //selects all the input elements inside the dropdown menus using the querySelectorAll() method and loops through them using a for loop.
+  const inputs = document.querySelectorAll(".dropdown input");
+  for (let i = 0; i < inputs.length; i++) {
+    const input = inputs.item(i);
+    inputValue = input.value.toLowerCase();
+    //For each input element, the function checks the type of the parent node using the dataset property and the switch statement.
+    switch (input.parentNode.dataset.type) {
+      // if  data-type is "ingredient", the function loops through the listOfIngredientsFiltered array  and checks if each item includes the user input using the includes() method. If an item includes the user input, it is added to the listOfIngredientsFilteredSearch array.
+      case "ingredient":
+        for (let i = 0; i < listOfIngredientsFiltered.length; i++) {
+          const item = listOfIngredientsFiltered[i].toLowerCase();
+          if (item.includes(inputValue)) {
+            listOfIngredientsFilteredSearch.push(item);
+          }
+        }
+        break;
+      // The same process is repeated for the "appliance" dropdown menu,
+      case "appliance":
+        for (let i = 0; i < listOfAppliancesFiltered.length; i++) {
+          const item = listOfAppliancesFiltered[i];
+          if (item.includes(inputValue)) {
+            listOfAppliancesFilteredSearch.push(item);
+          }
+        }
+        break;
+
+      // The same process is repeated for the "utensil" dropdown menu,
+      case "utensil":
+        for (let i = 0; i < listOfUtensilsFiltered.length; i++) {
+          const item = listOfUtensilsFiltered[i];
+          if (item.includes(inputValue)) {
+            listOfUtensilsFilteredSearch.push(item);
+          }
+        }
+        break;
+    }
+  }
+}
