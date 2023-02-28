@@ -87,20 +87,36 @@ function createCard(recipe) {
   card.appendChild(cardBody);
   return card;
 }
-// displaying recipes
-function displayRecipes(recipes) {
-  const recipeContainer = document.querySelector(".grid");
-  recipeContainer.innerHTML = ""; // clear the container
 
-  recipes.forEach((recipe) => {
-    const card = createCard(recipe);
-    recipeContainer.appendChild(card);
-  });
+function reloadCards() {
+  document.querySelector("section").innerHTML = "";
+  if (recipesFiltered != 0) {
+    for (let i = 0; i < recipesFiltered.length; i++) {
+      document
+        .querySelector("section")
+        .appendChild(createCard(recipesFiltered[i]));
+    }
+  } else {
+    const h2 = document.createElement("h2");
+    h2.classList.add("nothingAvailable");
+    h2.textContent =
+      "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+    document.querySelector("section").appendChild(h2);
+  }
 }
 
 async function init() {
   await structureData(recipes); // awaits the completion of the structureData() function, which is an asynchronous function that returns the unique lists of ingredients, utensils, and appliances from the recipes array.
-  displayRecipes(recipes);
+  getDropdownsLists();
+  reloadCards();
 }
 
 init();
+
+let listOfIngredientsFiltered = listOfIngredients;
+let listOfUtensilsFiltered = listOfUtensils;
+let listOfAppliancesFiltered = listOfAppliances;
+
+let listOfIngredientsFilteredSearch = listOfIngredientsFiltered;
+let listOfAppliancesFilteredSearch = listOfAppliancesFiltered;
+let listOfUtensilsFilteredSearch = listOfUtensilsFiltered;
