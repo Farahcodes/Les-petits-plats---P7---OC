@@ -99,8 +99,7 @@ function reloadCards() {
   } else {
     const h2 = document.createElement("h2");
     h2.classList.add("nothingAvailable");
-    h2.textContent =
-      "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+    h2.textContent = "No recipe matches your search.";
     document.querySelector("section").appendChild(h2);
   }
 }
