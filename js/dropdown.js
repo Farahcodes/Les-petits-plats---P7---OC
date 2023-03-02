@@ -127,39 +127,6 @@ function addDropdownFilter(event) {
   }
 } // is called when a tag is selected from a dropdown menu. It adds the tag to the list of selected tags and calls recipesTagUpdate() to update the list of displayed recipes based on the new selection.
 
-function addDropdownFilter(event) {
-  const target = event.currentTarget;
-  const text = target.textContent;
-  const type = target.parentNode.parentNode.parentNode.dataset.type;
-  const selectedFilters = document.querySelector(".filtersSelected");
-
-  const listType =
-    type === "ingredient"
-      ? listOfIngredientsSelected
-      : type === "appliance"
-      ? listOfAppliancesSelected
-      : type === "utensil"
-      ? listOfUtensilsSelected
-      : "";
-
-  if (!listType.has(text)) {
-    listType.add(text);
-    selectedFilters.appendChild(createDropdownFilterCard(text, type));
-    recipesTagUpdate();
-  }
-
-  if (
-    listOfIngredientsSelected.size +
-      listOfAppliancesSelected.size +
-      listOfUtensilsSelected.size >
-    0
-  ) {
-    selectedFilters.style.display = "flex";
-  } else {
-    selectedFilters.style.display = "";
-  }
-} // is called when a tag is selected from a dropdown menu. It adds the tag to the list of selected tags and calls recipesTagUpdate() to update the list of displayed recipes based on the new selection.
-
 function removeDropdownFilter(event) {
   const target = event.currentTarget;
   const text =
