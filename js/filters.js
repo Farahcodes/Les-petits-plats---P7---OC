@@ -164,6 +164,7 @@ function recipesInputFilter() {
 }
 
 // Updates the filtered recipe list by calling the recipesInputFilter() function to apply the search input filter. Then, it updates the recipesFiltered array and re-generates the dropdown lists using the getDropdownsLists() function. Finally, it calls the reloadCards() function to display the updated recipe cards.
+//Its main purpose is to update the inputValue variable with the latest value of the search bar so that the recipesInputFilter() function can filter the list based on the latest user input
 function recipesInputUpdate() {
   recipesInputFiltered = recipesInputFilter();
   recipesFiltered = recipesInputFiltered;
