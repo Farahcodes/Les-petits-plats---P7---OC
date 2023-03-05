@@ -17,7 +17,7 @@ let listOfAppliancesFilteredInput = [];
 
 let recipesTagFiltered = recipes; //used to store the list of recipes that have been filtered by the tag filters
 let recipesInputFiltered = recipesTagFiltered; //used to store the list of recipes that have been filtered by the search input
-let recipesFiltered = recipesInputFiltered; // used to store the intersection of the two filtered lists
+let recipesFiltered = recipesInputFiltered; // used to store the intersection of the two filtered lists (by tags and search input)
 
 // Function that filters the recipes based on selected tags (ingredients, utensils, appliances) and returns the filtered list of recipes.
 function recipesTagFilter() {
