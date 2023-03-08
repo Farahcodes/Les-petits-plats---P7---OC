@@ -72,3 +72,47 @@ async function recipesTagReload() {
   recipesTagFiltered = recipes;
   recipesTagUpdate();
 }
+
+// Function that filters recipes based on a search input entered by the user
+function recipesInputFilter() {
+  // Getting the input value entered by the user
+  const inputFilter = document
+    .querySelector(".search input")
+    .value.toLowerCase();
+
+  let itemsFiltered = []; // Array to store the filtered recipes.
+
+  if (inputFilter.length >= 3) {
+    // Cards filters
+    itemsFiltered = recipesInputFiltered.filter(
+      (item) =>
+        // checks if the recipe name or description includes the input value, or if any of the ingredients in the recipe include the inputFilter value
+        item.name.toLowerCase().includes(inputFilter) ||
+        item.ingredients.some((ingredientSelected) =>
+          ingredientSelected.ingredient.includes(inputFilter)
+        ) ||
+        item.description.toLowerCase().includes(inputFilter)
+    );
+
+    // Dropdowns filters
+    [
+      listOfIngredientsFilteredInput,
+      listOfUtensilsFilteredInput,
+      listOfAppliancesFilteredInput,
+    ] = [...structureItems(itemsFiltered)];
+    [
+      listOfIngredientsFiltered,
+      listOfUtensilsFiltered,
+      listOfAppliancesFiltered,
+    ] = [
+      listOfIngredientsFilteredInput,
+      listOfUtensilsFilteredInput,
+      listOfAppliancesFilteredInput,
+    ];
+  } else {
+    // if the length if the user inputs is less than 3, returning the recipesTagFiltered that initially contains the full list of recipes
+    itemsFiltered = recipesTagFiltered;
+  }
+
+  return itemsFiltered;
+}
