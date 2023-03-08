@@ -135,3 +135,38 @@ async function recipesInputReload() {
   recipesInputFiltered = recipesTagFiltered;
   recipesInputUpdate();
 }
+
+// Filtering the recipes based on the input elements within the dropdown menu
+function dropdownFilterInput() {
+  [
+    listOfIngredientsFilteredSearch,
+    listOfAppliancesFilteredSearch,
+    listOfUtensilsFilteredSearch,
+  ] = [[], [], []];
+  const inputs = document.querySelectorAll(".dropdown input");
+  // iterating through each input
+  [...inputs].map((input) => {
+    inputValue = input.value.toLowerCase();
+
+    // Using switch to determine which type of item to filter
+    switch (input.parentNode.dataset.type) {
+      case "ingredient":
+        listOfIngredientsFilteredSearch = listOfIngredientsFiltered.filter(
+          (item) => item.includes(inputValue)
+        );
+        break;
+
+      case "appliance":
+        listOfAppliancesFilteredSearch = listOfAppliancesFiltered.filter(
+          (item) => item.includes(inputValue)
+        );
+        break;
+
+      case "utensil":
+        listOfUtensilsFilteredSearch = listOfUtensilsFiltered.filter((item) =>
+          item.includes(inputValue)
+        );
+        break;
+    }
+  });
+}
