@@ -65,7 +65,7 @@ function recipesTagFilter() {
 
 async function recipesTagUpdate() {
   recipesTagFiltered = recipesTagFilter();
-  // recipesInputReload();
+  recipesInputReload();
 }
 
 async function recipesTagReload() {
@@ -115,4 +115,21 @@ function recipesInputFilter() {
   }
 
   return itemsFiltered;
+}
+
+// Updating the list of filtered recipes based on the user's input in the search bar.
+async function recipesInputUpdate() {
+  recipesInputFiltered = recipesInputFilter();
+  // updating recipesFiltered to match as this is the main list of recipes used to generate the cards in the page
+  recipesFiltered = recipesInputFiltered;
+  // Updating the lists of ingredients, appliances, and utensils that are displayed in the filter dropdown menus
+  getDropdownsLists();
+  // Re-rendering the recipe cards on the page to match the updated recipesFiltered list.
+  reloadCards();
+}
+
+// Reset the list of filtered recipes back to the original list that is filtered by tags
+async function recipesInputReload() {
+  recipesInputFiltered = recipesTagFiltered;
+  recipesInputUpdate();
 }
