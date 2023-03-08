@@ -63,14 +63,16 @@ function recipesTagFilter() {
   return itemsFiltered;
 }
 
+// Called when the user selects new tags or removes existing ones
 async function recipesTagUpdate() {
   recipesTagFiltered = recipesTagFilter();
-  recipesInputReload();
+  recipesInputReload(); // To update the list of recipes filtered by both tags and search input.
 }
 
+// Called when the user clears all the selected tags
 async function recipesTagReload() {
   recipesTagFiltered = recipes;
-  recipesTagUpdate();
+  recipesTagUpdate(); // To update the list of recipes filtered by tags and search input
 }
 
 // Function that filters recipes based on a search input entered by the user
