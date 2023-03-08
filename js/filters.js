@@ -62,3 +62,13 @@ function recipesTagFilter() {
 
   return itemsFiltered;
 }
+
+async function recipesTagUpdate() {
+  recipesTagFiltered = recipesTagFilter();
+  // recipesInputReload();
+}
+
+async function recipesTagReload() {
+  recipesTagFiltered = recipes;
+  recipesTagUpdate();
+}
